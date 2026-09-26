@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extracción de Estilo - VERSE Studio Mockup</title>
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind Configuration to match reference styles -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            ref: {
+              bgDark: '#0d0614',
+              bgDeep: '#050208',
+              pinkGrid: 'rgba(236, 72, 153, 0.05)',
+              accentPink: '#ec4899',
+              accentCyan: '#06b6d4',
+              accentOrange: '#f97316',
+              accentBlue: '#2563eb',
+              glowPurple: '#c026d3'
+            }
+          },
+          borderRadius: {
+            'organic': '40px'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Glowing grid pattern from mockup */
+    .bg-tech-grid {
+      background-size: 50px 50px;
+      background-image: 
+        linear-gradient(to right, rgba(236, 72, 153, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(236, 72, 153, 0.04) 1px, transparent 1px);
+    }
+
+    /* Ambient glassmorphism with pink boundary glows */
+    .reference-glass {
+      background: rgba(23, 11, 35, 0.45);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(236, 72, 153, 0.12);
+    }
+
+    .reference-glass-heavy {
+      background: rgba(13, 6, 20, 0.85);
+      backdrop-filter: blur(32px);
+      -webkit-backdrop-filter: blur(32px);
+      border: 1px solid rgba(236, 72, 153, 0.2);
+    }
+
+    /* Radial ambient glows at top and bottom of layout */
+    .glow-radial-top {
+      background: radial-gradient(circle at top, rgba(37, 99, 235, 0.22) 0%, rgba(192, 38, 211, 0.06) 50%, transparent 100%);
+    }
+
+    .glow-radial-bottom {
+      background: radial-gradient(circle at bottom, rgba(192, 38, 211, 0.25) 0%, rgba(37, 99, 235, 0.12) 60%, transparent 100%);
+    }
+
+    /* Animations for orbiting and particles */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-10px) scale(1.05); }
+    }
+    
+    @keyframes rotate-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-rotate-slow {
+      animation: rotate-slow 30s linear infinite;
+    }
+
+    /* Custom Hide Scrollbar */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-ref-bgDark text-white min-h-screen overflow-x-hidden font-sans relative selection:bg-ref-accentPink selection:text-white">
+
+  <!-- Ambient Light Effects -->
+  <div class="absolute inset-0 pointer-events-none z-0">
+    <!-- Glowing Halo Arc Top -->
+    <div class="absolute top-0 inset-x-0 h-[600px] glow-radial-top"></div>
+    <!-- Glowing Halo Arc Bottom -->
+    <div class="absolute bottom-0 inset-x-0 h-[800px] glow-radial-bottom"></div>
+    
+    <!-- Floating Light Orbs -->
+    <div class="absolute top-1/4 left-10 w-96 h-96 bg-ref-glowPurple/15 rounded-full filter blur-[120px] animate-pulse"></div>
+    <div class="absolute top-1/2 right-10 w-[450px] h-[450px] bg-ref-accentBlue/10 rounded-full filter blur-[140px] animate-pulse" style="animation-delay: 2s;"></div>
+  </div>
+
+  <!-- Main Grid Background Overlay -->
+  <div class="absolute inset-0 bg-tech-grid pointer-events-none z-0"></div>
+
+  <!-- CONTAINER SCROLL -->
+  <div class="relative z-10 max-w-[480px] sm:max-w-xl md:max-w-4xl mx-auto px-4 pt-8 pb-32">
+
+    <!-- FLOATING CAPSULE HEADER -->
+    <header class="w-full flex justify-center mb-16 animate-float">
+      <div class="w-full max-w-2xl px-6 py-3.5 rounded-full reference-glass flex items-center justify-between shadow-[0_15px_35px_rgba(0,0,0,0.5)] border border-white/10">
+        <!-- Badge Logo Left -->
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-full bg-gradient-to-br from-ref-glowPurple to-ref-accentBlue p-[2px] flex items-center justify-center shadow-lg">
+            <div class="w-full h-full rounded-full bg-ref-bgDark flex items-center justify-center">
+              <!-- Golden crown/shield badge likeness -->
+              <span class="text-xs font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-300">👑</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Links Center -->
+        <nav class="hidden sm:flex items-center gap-6 text-sm font-medium tracking-wide">
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">About</a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">Picture</a>
+          <!-- Edbar Pill Capsule Button -->
+          <a href="#" class="px-5 py-1.5 rounded-full border border-ref-accentPink/40 bg-ref-accentPink/10 text-white text-xs font-semibold hover:bg-ref-accentPink/20 transition-all shadow-[0_0_12px_rgba(236,72,153,0.3)]">Edbar</a>
+        </nav>
+
+        <!-- Hamburger Icon Right -->
+        <button class="p-1 text-gray-300 hover:text-white transition-colors flex flex-col gap-1.5 justify-center items-end" aria-label="Menu">
+          <span class="w-6 h-[2px] bg-white rounded-full"></span>
+          <span class="w-5 h-[2px] bg-white rounded-full"></span>
+          <span class="w-4 h-[2px] bg-white rounded-full"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- TWO-COLUMN HERO AND CARD SHOWCASE -->
+    <main class="grid md:grid-cols-12 gap-12 items-center mb-16">
+      
+      <!-- Headline & Call to Action Column -->
+      <section class="md:col-span-6 space-y-6 text-left">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase tracking-widest font-semibold text-ref-accentPink">
+          <span class="w-1.5 h-1.5 rounded-full bg-ref-accentPink animate-ping"></span> Style Extraction
+        </div>
+
+        <!-- Title: Bold styling with custom icon -->
+        <h1 class="text-4xl sm:text-5xl md:text-[56px] font-extrabold font-display leading-[1.08] tracking-tight">
+          Fantasy Picture<br>
+          <span class="inline-flex items-center gap-2 text-transparent bg-clip-text bg-gradient-to-r from-ref-accentPink via-fuchsia-400 to-indigo-400">
+            Background
+            <span class="w-10 h-10 rounded-full border border-white/20 bg-white/10 flex items-center justify-center text-white text-lg font-normal shadow-md transform hover:rotate-45 transition-transform cursor-pointer">↙</span>
+          </span>
+        </h1>
+
+        <!-- Indonesian Text from Mockup -->
+        <p class="text-gray-400 text-sm leading-relaxed max-w-md font-light">
+          Fantasi bisa juga merupakan sebuah genre fiksi, yang menggunakan bentuk sihir dan supranatural sebagai salah satu unsur alur, tema, y layar dalam sebuah film. Genre fantasi secara umum dibedakan dengan genre fiksi ilmiah yang lebih bertemakan ilmiah dan tentang hal yang mengerikan.
+        </p>
+
+        <!-- Review Pill button -->
+        <div class="pt-2">
+          <button class="px-6 py-3 rounded-full reference-glass border border-ref-accentPink/30 hover:border-ref-accentPink/60 text-white font-medium text-sm flex items-center gap-3 hover:scale-105 active:scale-95 transition-all shadow-[0_10px_20px_rgba(0,0,0,0.3)] group">
+            Review
+            <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-white text-xs group-hover:bg-white/25 transition-colors">
+              &gt;
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Right Landscape Showcase Card -->
+      <section class="md:col-span-6 flex justify-center md:justify-end">
+        <div class="relative w-72 h-80 rounded-organic overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.6)] group">
+          <!-- Real fantasy image simulation from noche-de-museos or premium gradient landscape fallback -->
+          <img 
+            src="https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?q=80&w=600&auto=format&fit=crop" 
+            alt="Fantasy Mountain Scenery" 
+            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+          />
+          <!-- Pink bioluminescent outline -->
+          <div class="absolute inset-0 border-[2px] border-transparent group-hover:border-ref-accentPink/30 rounded-organic pointer-events-none transition-all duration-500"></div>
+          <!-- Dark shading -->
+          <div class="absolute inset-0 bg-gradient-to-t from-ref-bgDark/90 via-transparent to-transparent"></div>
+          <!-- Active curve overlay label -->
+          <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[9px] uppercase tracking-wider font-bold">
+            Preview Frame
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- INTERACTIVE CAROUSEL PORTAL SECTION -->
+    <section class="w-full py-12 flex flex-col items-center relative">
+      <!-- Glow ring backing -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] rounded-full border border-dashed border-ref-accentPink/10 pointer-events-none z-0"></div>
+
+      <!-- Carousel Row Grid -->
+      <div class="relative z-10 flex items-center justify-center gap-6 w-full max-w-3xl h-[400px] mb-8">
+        
+        <!-- Side Card Left -->
+        <div class="w-40 h-64 rounded-organic overflow-hidden border border-white/5 opacity-40 hover:opacity-60 transition-all duration-500 scale-90 translate-x-4 cursor-pointer relative group">
+          <img 
+            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop" 
+            alt="Landscape Side L" 
+            class="w-full h-full object-cover blur-[2px]"
+          />
+          <div class="absolute inset-0 bg-ref-bgDark/40"></div>
+        </div>
+
+        <!-- ACTIVE CENTRAL BIG CARD -->
+        <div class="w-64 h-80 rounded-organic overflow-hidden border border-ref-accentPink/30 shadow-[0_20px_50px_rgba(236,72,153,0.18)] relative group cursor-pointer transition-all duration-700 hover:scale-105">
+          <!-- Background image (mountain sunrise) -->
+          <img 
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600&auto=format&fit=crop" 
+            alt="Fantasy Mountain Portal" 
+            class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
+          />
+          <!-- Blur filter simulation from active mockup -->
+          <div class="absolute inset-0 bg-ref-bgDark/30 backdrop-blur-[2px] transition-all group-hover:backdrop-blur-none duration-500"></div>
+          <!-- Dark overlay gradient -->
+          <div class="absolute inset-0 bg-gradient-to-t from-ref-bgDark/90 via-transparent to-transparent"></div>
+
+          <!-- Play Icon Top Right (as in reference image) -->
+          <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg hover:bg-white/35 transition-colors cursor-pointer">
+            <!-- Play icon path -->
+            <svg class="w-3.5 h-3.5 fill-current ml-0.5" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+
+          <!-- Central HUGE Download Symbol (↙/↓) -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white shadow-2xl group-hover:scale-110 group-hover:bg-ref-accentPink/20 group-hover:border-ref-accentPink/40 transition-all duration-500">
+              <!-- Download Arrow -->
+              <svg class="w-7 h-7 animate-bounce" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card Border Glow -->
+          <div class="absolute inset-0 border-[2px] border-ref-accentPink/15 rounded-organic pointer-events-none group-hover:border-ref-accentPink/50 transition-all duration-500"></div>
+        </div>
+
+        <!-- Side Card Right -->
+        <div class="w-40 h-64 rounded-organic overflow-hidden border border-white/5 opacity-40 hover:opacity-60 transition-all duration-500 scale-90 -translate-x-4 cursor-pointer relative group">
+          <img 
+            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=600&auto=format&fit=crop" 
+            alt="Landscape Side R" 
+            class="w-full h-full object-cover blur-[2px]"
+          />
+          <div class="absolute inset-0 bg-ref-bgDark/40"></div>
+        </div>
+
+      </div>
+
+      <!-- View All Pill Capsule -->
+      <button class="px-6 py-2 rounded-full reference-glass border border-white/10 text-xs font-semibold hover:border-ref-accentPink/40 text-gray-300 hover:text-white transition-all shadow-md">
+        View All
+      </button>
+
+      <!-- Chevron down anchor with pulse animation -->
+      <div class="mt-4 w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-ref-accentPink/30 transition-all cursor-pointer animate-bounce">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE CIRCULAR WHEEL DIAL (THE CROWN JEWEL STYLE) -->
+    <section class="w-full py-16 flex flex-col items-center relative overflow-hidden">
+      <!-- Section Title -->
+      <div class="text-center mb-8">
+        <h3 class="text-xs uppercase font-bold tracking-widest text-ref-accentPink mb-1">Orbit Console</h3>
+        <p class="text-[10px] text-gray-500 font-light">Interactive curved dashboard style</p>
+      </div>
+
+      <!-- THE WHEEL HOUSING -->
+      <div class="relative w-[500px] h-[320px] mx-auto flex justify-center items-end">
+        
+        <!-- Giant Orbit Arc Track (concentric glowing rings) -->
+        <div class="absolute bottom-[-150px] w-[500px] h-[500px] rounded-full border border-ref-accentPink/10 pointer-events-none z-0 shadow-[0_0_80px_rgba(236,72,153,0.03)]"></div>
+        <div class="absolute bottom-[-170px] w-[540px] h-[540px] rounded-full border-[1.5px] border-dashed border-ref-accentPink/20 pointer-events-none z-0"></div>
+        <div class="absolute bottom-[-200px] w-[600px] h-[600px] rounded-full border border-white/5 pointer-events-none z-0"></div>
+        
+        <!-- Pink Arc Glow Path (bottom semicircular dashboard glow) -->
+        <div class="absolute bottom-[-120px] w-[460px] h-[280px] rounded-t-full bg-gradient-to-t from-ref-accentPink/15 via-transparent to-transparent pointer-events-none z-0 border-t border-ref-accentPink/30 blur-sm"></div>
+
+        <!-- WHEEL SATELLITE ROTATOR (Interactive JS controls this rotate value) -->
+        <div id="rotator" class="absolute bottom-[-180px] w-[480px] h-[480px] rounded-full transition-transform duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1) z-10">
+          
+          <!-- Orbit Card 1 (Left - 225 deg) -->
+          <div class="absolute top-[80px] left-[50px] transform -translate-x-1/2 -translate-y-1/2 -rotate-[45deg] cursor-pointer" onclick="rotateWheel(45)">
+            <div class="w-24 h-32 rounded-[24px] overflow-hidden border border-white/10 shadow-lg group hover:border-ref-accentPink/40 transition-all">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=400&auto=format&fit=crop" alt="Scenery Mini 1" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-ref-bgDark/80 to-transparent"></div>
+            </div>
+          </div>
+
+          <!-- Orbit Card 2 (Center Active - 270 deg) -->
+          <div class="absolute top-[0px] left-[240px] transform -translate-x-1/2 -translate-y-1/2 rotate-0 cursor-pointer" onclick="rotateWheel(0)">
+            <!-- Central Active High-Fidelity card wrapper -->
+            <div class="w-32 h-44 rounded-organic overflow-hidden border-2 border-ref-accentPink/40 shadow-[0_0_35px_rgba(236,72,153,0.3)] group hover:scale-105 transition-all">
+              <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=400&auto=format&fit=crop" alt="Scenery Mini 2" class="w-full h-full object-cover">
+              
+              <!-- Floating tiny white arrow in circle on top-right -->
+              <div class="absolute top-2.5 right-2.5 w-6 h-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white border border-white/20 text-[10px]">
+                ↗
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-ref-bgDark/85 to-transparent"></div>
+            </div>
+          </div>
+
+          <!-- Orbit Card 3 (Right - 315 deg) -->
+          <div class="absolute top-[80px] right-[50px] transform translate-x-1/2 -translate-y-1/2 rotate-[45deg] cursor-pointer" onclick="rotateWheel(-45)">
+            <div class="w-24 h-32 rounded-[24px] overflow-hidden border border-white/10 shadow-lg group hover:border-ref-accentPink/40 transition-all">
+              <img src="https://images.unsplash.com/photo-1472214222555-d404758b1c42?q=80&w=400&auto=format&fit=crop" alt="Scenery Mini 3" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-ref-bgDark/80 to-transparent"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CORE EMBLEM (The glowing blue badge at the wheel's focus point) -->
+        <div class="relative z-20 mb-6 group cursor-pointer" onclick="randomRotate()">
+          <div class="w-20 h-20 rounded-full bg-ref-accentBlue flex items-center justify-center border-4 border-ref-bgDark shadow-[0_0_40px_rgba(37,99,235,0.9)] relative transition-transform duration-500 hover:scale-110">
+            <!-- Interlaced branding badge likeness -->
+            <svg class="text-white w-10 h-10 drop-shadow-[0_0_10px_rgba(255,255,255,0.7)]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 006.1 1.83z"/>
+            </svg>
+            <!-- Glowing outer ring -->
+            <div class="absolute inset-[-8px] rounded-full border border-ref-accentPink/40 animate-ping opacity-60 pointer-events-none"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation Arrows to Spin Wheel -->
+      <div class="flex items-center gap-6 mt-6 relative z-30">
+        <button onclick="rotateStep(45)" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:border-ref-accentPink/40 hover:bg-ref-accentPink/15 text-white flex items-center justify-center transition-all active:scale-95 shadow-md">
+          ←
+        </button>
+        <span class="text-xs uppercase tracking-widest font-black text-gray-400">Interact Dial</span>
+        <button onclick="rotateStep(-45)" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:border-ref-accentPink/40 hover:bg-ref-accentPink/15 text-white flex items-center justify-center transition-all active:scale-95 shadow-md">
+          →
+        </button>
+      </div>
+
+    </section>
+
+    <!-- METADATA & DOCUMENTATION INFO BOX -->
+    <footer class="mt-20 p-8 rounded-organic reference-glass border border-white/10 text-center">
+      <h4 class="text-lg font-bold font-display text-ref-accentPink mb-2">Diseño Extraído Correctamente</h4>
+      <p class="text-gray-400 text-xs leading-relaxed max-w-lg mx-auto font-light">
+        Este script interactivo demuestra la combinación estilística exacta: colores violeta profundo, mallas tecnológicas rosas, bordes sumamente curvos (<code class="bg-black/30 px-1 py-0.5 rounded text-ref-accentPink">40px</code>) y una consola de órbita radial para el control del visualizador.
+      </p>
+      <div class="mt-4 flex flex-wrap justify-center gap-4 text-[10px] text-gray-500 font-bold tracking-widest uppercase">
+        <span>#13071E (VIOLET)</span>
+        <span>•</span>
+        <span>#EC4899 (PINK GRID)</span>
+        <span>•</span>
+        <span>#2563EB (GLOW BLUE)</span>
+        <span>•</span>
+        <span>ROUNDED-ORGANIC (40PX)</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // JS Logic to manage the interactive wheel dial
+    let currentRotation = 0;
+
+    function rotateWheel(angle) {
+      currentRotation = angle;
+      document.getElementById('rotator').style.transform = `rotate(${currentRotation}deg)`;
+      
+      // Select orbiting elements and rotate inside cards inversely to keep them upright
+      const satellites = document.querySelectorAll('#rotator > div');
+      satellites.forEach((sat, idx) => {
+        // Find default rotation offset of card
+        let offset = 0;
+        if (idx === 0) offset = -45;
+        if (idx === 1) offset = 0;
+        if (idx === 2) offset = 45;
+        
+        sat.style.transform = `translate(-50%, -50%) rotate(${-currentRotation + offset}deg)`;
+      });
+    }
+
+    function rotateStep(step) {
+      rotateWheel(currentRotation + step);
+    }
+
+    function randomRotate() {
+      const angles = [-90, -45, 0, 45, 90];
+      const randomAngle = angles[Math.floor(Math.random() * angles.length)];
+      rotateWheel(randomAngle);
+    }
+  </script>
+
+</body>
+</html>

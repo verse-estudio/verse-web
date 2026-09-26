@@ -1,0 +1,42 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node dependencies
+node_modules
+
+# Build outputs
+dist
+dist-ssr
+
+# Environment variables (Crucial: never upload secrets to GitHub)
+.env
+.env.local
+.env.*.local
+
+# Editor & OS files
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Raw multimedia & source documents (kept local to keep GitHub repository fast and under file limits)
+BRANDING/
+DOCUMENTOS/
+GRAB_VOC/
+Noche de Museos/
+Verse web/
+*.zip
+*.rar
+*.7z
