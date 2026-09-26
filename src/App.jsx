@@ -91,6 +91,7 @@ export default function App() {
       <Verse3DLogoCanvas 
         scrolled={scrolled}
         view={view}
+        isMenuOpen={isMenuOpen}
         onLogoClick={() => {
           if (view !== 'home') {
             navigateTo('home');

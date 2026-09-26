@@ -15,6 +15,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 export default function Verse3DLogoCanvas({ 
   scrolled, 
   view, 
+  isMenuOpen = false,
   onLogoClick 
 }) {
   const containerRef = useRef(null);
@@ -302,20 +303,20 @@ export default function Verse3DLogoCanvas({
 
   return (
     <>
-      {/* STRAIGHT WORDMARK LOGO (Parallel to X-Axis, beside the small 3D Logo when docked) */}
+      {/* STRAIGHT WORDMARK LOGO (Centered on mobile format to avoid overlapping hamburger menu; beside 3D logo on desktop) */}
       <div
         onClick={onLogoClick}
-        className={`fixed top-5 sm:top-6 md:top-7.5 right-22 sm:right-28 md:right-32 z-50 flex items-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] select-none cursor-pointer group ${
-          isDocked 
-            ? 'opacity-100 translate-x-0 pointer-events-auto' 
-            : 'opacity-0 translate-x-8 pointer-events-none'
+        className={`fixed top-4 sm:top-5 md:top-6.5 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-28 lg:right-32 z-40 flex items-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] select-none cursor-pointer group ${
+          isDocked && !isMenuOpen
+            ? 'opacity-100 pointer-events-auto' 
+            : 'opacity-0 pointer-events-none'
         }`}
         title="VERSE Estudio Audiovisual - Volver arriba"
       >
         <img 
           src="/assets/logo/verse_wordmark_straight_white.png" 
           alt="VERSE" 
-          className="h-6 sm:h-7.5 md:h-8 object-contain filter drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)] brightness-110 group-hover:brightness-125 transition-all" 
+          className="h-5 sm:h-6 md:h-7.5 object-contain filter drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)] brightness-110 group-hover:brightness-125 transition-all" 
         />
       </div>
 
@@ -325,7 +326,7 @@ export default function Verse3DLogoCanvas({
         onClick={onLogoClick}
         className={`fixed transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] select-none ${
           isDocked
-            ? 'top-2.5 sm:top-3.5 right-4 sm:right-6 md:right-8 z-50 w-16 h-16 sm:w-20 sm:h-20 md:w-22 md:h-22 cursor-pointer hover:scale-105 active:scale-95 translate-x-0'
+            ? `top-2 sm:top-3 right-3 sm:right-6 md:right-8 z-40 w-14 h-14 sm:w-18 sm:h-18 md:w-22 md:h-22 cursor-pointer hover:scale-105 active:scale-95 translate-x-0 ${isMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`
             : 'top-20 sm:top-24 left-1/2 -translate-x-1/2 z-30 w-[270px] h-[270px] sm:w-[350px] sm:h-[350px] md:w-[420px] md:h-[420px] cursor-grab active:cursor-grabbing'
         }`}
         style={{ touchAction: 'none' }}
