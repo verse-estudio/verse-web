@@ -16,7 +16,8 @@ export default function Verse3DLogoCanvas({
   scrolled, 
   view, 
   isMenuOpen = false,
-  onLogoClick 
+  onLogoClick,
+  onLoaded
 }) {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
@@ -223,6 +224,7 @@ export default function Verse3DLogoCanvas({
 
         modelGroup.add(object);
         setIsLoading(false);
+        if (onLoaded) onLoaded();
       },
       undefined,
       (error) => {
@@ -240,12 +242,14 @@ export default function Verse3DLogoCanvas({
             object.scale.set(scaleFactor, scaleFactor, scaleFactor);
             modelGroup.add(object);
             setIsLoading(false);
+            if (onLoaded) onLoaded();
           },
           undefined,
           (fallbackErr) => {
             console.error('Failed to load 3D logo:', fallbackErr);
             setLoadError(true);
             setIsLoading(false);
+            if (onLoaded) onLoaded();
           }
         );
       }
@@ -327,7 +331,7 @@ export default function Verse3DLogoCanvas({
         className={`fixed transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] select-none ${
           isDocked
             ? `top-2 sm:top-3 right-3 sm:right-6 md:right-8 z-40 w-14 h-14 sm:w-18 sm:h-18 md:w-22 md:h-22 cursor-pointer hover:scale-105 active:scale-95 translate-x-0 ${isMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`
-            : 'top-20 sm:top-24 left-1/2 -translate-x-1/2 z-30 w-[270px] h-[270px] sm:w-[350px] sm:h-[350px] md:w-[420px] md:h-[420px] cursor-grab active:cursor-grabbing'
+            : 'top-20 sm:top-22 md:top-24 left-1/2 -translate-x-1/2 z-30 w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] md:w-[340px] md:h-[340px] cursor-grab active:cursor-grabbing'
         }`}
         style={{ touchAction: 'none' }}
         title={isDocked ? "VERSE Estudio Audiovisual - Volver arriba" : "Logo 3D de VERSE - Mueve el cursor para interactuar"}
@@ -337,7 +341,7 @@ export default function Verse3DLogoCanvas({
           className={`absolute inset-0 rounded-full transition-all duration-700 pointer-events-none ${
             isDocked 
               ? 'bg-gradient-to-r from-verse-cyan/35 via-verse-purple/25 to-verse-orange/30 blur-md opacity-80' 
-              : 'bg-gradient-to-tr from-verse-cyan/25 via-verse-purple/20 to-verse-orange/20 blur-3xl opacity-90 animate-pulse-slow'
+              : 'bg-gradient-to-tr from-verse-blue/40 via-verse-cyan/30 to-verse-blue/40 blur-3xl opacity-90 animate-pulse-slow'
           }`} 
         />
 

@@ -11,11 +11,13 @@ import TiendaView from './views/TiendaView';
 import OficinaVirtualPortal from './views/OficinaVirtual';
 import CyanCursorGlow from './components/CyanCursorGlow';
 import Verse3DLogoCanvas from './components/Verse3DLogoCanvas';
+import VersePreloader from './components/VersePreloader';
 
 export default function App() {
   const [view, setView] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [is3DLoaded, setIs3DLoaded] = useState(false);
   
   // E-commerce & Modal States
   const [cart, setCart] = useState([]);
@@ -84,6 +86,9 @@ export default function App() {
   return (
     <div className="min-h-screen bg-verse-bg font-sans text-white selection:bg-verse-cyan selection:text-verse-bg flex flex-col justify-between relative">
       
+      {/* Fullscreen Initial Preloader Screen */}
+      <VersePreloader isLoaded={is3DLoaded} />
+
       {/* Cyan Bioluminescent interactive cursor trail */}
       <CyanCursorGlow />
 
@@ -92,6 +97,7 @@ export default function App() {
         scrolled={scrolled}
         view={view}
         isMenuOpen={isMenuOpen}
+        onLoaded={() => setIs3DLoaded(true)}
         onLogoClick={() => {
           if (view !== 'home') {
             navigateTo('home');

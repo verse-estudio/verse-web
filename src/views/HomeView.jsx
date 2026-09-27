@@ -3,6 +3,7 @@ import { Eye, Sparkles, Map, MessageSquare, Film, ArrowRight, Instagram, Youtube
 import Button from '../components/Button';
 import SectionHeading from '../components/SectionHeading';
 import RocolaUniversos from '../components/RocolaUniversos';
+import DynamicGalaxyScene from '../components/DynamicGalaxyScene';
 
 const HomeView = ({ setView, onOpenContact }) => {
   // Quick inquiry state for Section 5 minimal form
@@ -30,97 +31,77 @@ const HomeView = ({ setView, onOpenContact }) => {
       <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none z-0" />
 
       {/* ========================================================
-          SECCIÓN 1: EL DESPERTAR (Hero / Propuesta de Valor)
-          "VERSE Estudio Audiovisual - Narrando historias, conectando universos."
+          SECCIÓN 1: EL DESPERTAR (Hero / Post-Evento / Panel Protagonista)
+          Logo 3D + Nombre VERSE en Azul Predominante (#003FF6) + Galaxia Dinámica
          ======================================================== */}
-      <section className="relative min-h-[96vh] flex items-center justify-center overflow-hidden pt-16 pb-20 px-4">
-        {/* Galaxy Texture & Cosmic Brand Nebulas */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          {/* Deep cosmos gradient layer */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-verse-blue/40 via-verse-bg to-[#010920]" />
-          
-          {/* Cosmic Galaxy Nebular Clouds in VERSE Brand Tones */}
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-verse-purple/30 via-verse-cyan/25 to-verse-orange/20 rounded-full blur-[140px] opacity-80 animate-pulse-slow" />
-          <div className="absolute top-1/3 left-1/4 w-[450px] h-[450px] bg-verse-cyan/20 rounded-full blur-[120px] animate-blob" />
-          <div className="absolute top-1/3 right-1/4 w-[450px] h-[450px] bg-verse-orange/15 rounded-full blur-[130px] animate-blob animation-delay-2000" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-verse-yellow/10 rounded-full blur-[150px] animate-blob animation-delay-4000" />
+      <section className="relative min-h-[96vh] flex items-center justify-center overflow-hidden pt-20 pb-16 px-4">
+        {/* Escena dinámica de galaxia espiral en el fondo */}
+        <DynamicGalaxyScene />
 
-          {/* Galaxy Stardust Texture Overlay */}
-          <div 
-            className="absolute inset-0 opacity-40 mix-blend-screen"
-            style={{
-              backgroundImage: `radial-gradient(1px 1px at 20px 30px, #1ecff8, rgba(0,0,0,0)),
-                                radial-gradient(1.5px 1.5px at 100px 150px, #ffd213, rgba(0,0,0,0)),
-                                radial-gradient(1px 1px at 200px 80px, #ffffff, rgba(0,0,0,0)),
-                                radial-gradient(2px 2px at 350px 280px, #8723a1, rgba(0,0,0,0)),
-                                radial-gradient(1.5px 1.5px at 450px 120px, #ed622e, rgba(0,0,0,0))`,
-              backgroundSize: '500px 500px'
-            }}
-          />
+        {/* Gradientes atmosféricos de soporte para suavizar bordes */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-verse-bg/50 via-transparent to-verse-bg" />
+          <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-verse-bg to-transparent" />
         </div>
 
-        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center">
-          {/* Spacer for the Protagonist 3D Logo (rendered smoothly in 3D WebGL Canvas) */}
-          <div className="w-full h-[260px] sm:h-[340px] md:h-[400px] flex items-center justify-center pointer-events-none mb-2" />
-          
-          {/* SEO H1 Headline: VERSE Estudio Audiovisual */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 tracking-tight leading-tight">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-verse-cyan via-white to-verse-orange drop-shadow-[0_0_25px_rgba(30,207,248,0.5)]">
+        {/* PANEL ÚNICO PROTAGONISTA: Rostro 3D + Nombre VERSE en Azul Predominante + Eslogan + Copy Post-Evento */}
+        <div className="relative z-10 w-full max-w-4xl mx-auto my-auto">
+          <div className="glass-panel-heavy rounded-3xl border border-verse-blue/40 shadow-[0_0_80px_rgba(0,63,246,0.3)] p-6 sm:p-10 md:p-14 text-center flex flex-col items-center relative overflow-hidden backdrop-blur-2xl">
+            {/* Resplandor bioluminiscente interior del panel */}
+            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-verse-blue/25 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-b from-verse-cyan/5 via-transparent to-verse-blue/10 pointer-events-none" />
+
+            {/* Badge de Bienvenida Post-Evento */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-verse-blue/20 border border-verse-blue/50 text-verse-cyan text-xs sm:text-sm font-semibold tracking-widest uppercase mb-4 shadow-[0_0_20px_rgba(30,207,248,0.2)]">
+              <Sparkles size={14} className="text-verse-cyan animate-pulse" />
+              <span>Conexión Post-Evento • Bienvenidos</span>
+            </div>
+
+            {/* Espaciador calibrado para alojar el Rostro 3D de VERSE en el epicentro superior del panel */}
+            <div className="w-full h-[220px] sm:h-[260px] md:h-[290px] pointer-events-none flex items-center justify-center" />
+
+            {/* Nombre Principal VERSE en un solo color azul predominante del design system (#003FF6 / text-verse-blue) */}
+            <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-[0.2em] uppercase text-verse-blue drop-shadow-[0_0_35px_rgba(0,63,246,0.7)] select-none my-2 font-sans">
               VERSE
-            </span>{' '}
-            <span className="font-extrabold tracking-tight">Estudio Audiovisual</span>
-          </h1>
+            </h1>
 
-          {/* Official Value Proposition & Slogan */}
-          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight tracking-tight">
-            <span className="inline-block mr-2 sm:mr-3">
-              <span className="font-decorative text-3xl sm:text-5xl md:text-6xl text-verse-cyan font-normal drop-shadow-[0_0_20px_rgba(30,207,248,0.5)]">N</span>
-              <span className="font-sans font-extrabold">arrando</span>
-            </span>
-            <span className="inline-block">
-              <span className="font-decorative text-3xl sm:text-5xl md:text-6xl text-white font-normal drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">H</span>
-              <span className="font-sans font-extrabold">istorias,</span>
-            </span>
-            <br className="hidden sm:inline" />
-            <span className="inline-block mr-2 sm:mr-3 sm:ml-2">
-              <span className="font-decorative text-3xl sm:text-5xl md:text-6xl text-verse-orange font-normal drop-shadow-[0_0_20px_rgba(237,98,46,0.5)]">C</span>
-              <span className="font-sans font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-verse-orange to-verse-yellow">onectando</span>
-            </span>
-            <span className="inline-block">
-              <span className="font-decorative text-3xl sm:text-5xl md:text-6xl text-verse-yellow font-normal drop-shadow-[0_0_20px_rgba(255,210,19,0.5)]">U</span>
-              <span className="font-sans font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-verse-yellow to-verse-cyan">niversos</span>
-            </span>
-          </h2>
-          
-          <p className="text-base sm:text-lg md:text-2xl text-gray-200 mb-8 max-w-3xl font-light leading-relaxed">
-            Transformamos ideas en experiencias audiovisuales inolvidables. Fusionamos creatividad, cine y simbolismo para que tu mensaje trascienda fronteras y conmueva el alma humana.
-          </p>
+            {/* Eslogan Oficial de la Marca */}
+            <h2 className="text-xs sm:text-sm md:text-base font-bold uppercase tracking-[0.25em] text-white/90 mb-6 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+              Narrando historias, conectando universos
+            </h2>
 
-          {/* Time Question Badge */}
-          <div className="text-xs md:text-sm uppercase tracking-widest text-verse-cyan font-bold mb-10 border border-verse-cyan/30 px-6 py-2.5 rounded-full bg-verse-cyan/10 backdrop-blur-md shadow-[0_0_20px_rgba(30,207,248,0.2)]">
-            “Si pudieras escribir un mensaje en el tiempo, ¿qué dirías?”
-          </div>
-          
-          {/* Primary Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-5 justify-center w-full sm:w-auto">
-            <Button 
-              primary 
-              onClick={() => {
-                const el = document.getElementById('rocola-universos');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-                else setView('estudio');
-              }} 
-              className="px-8 py-4 text-xs uppercase tracking-wider flex items-center justify-center gap-2"
-            >
-              <span>Explorar Portafolio</span>
-              <ArrowRight size={16} />
-            </Button>
-            <Button 
-              onClick={() => setView('experiencias')} 
-              className="px-8 py-4 text-xs uppercase tracking-wider"
-            >
-              Vivir Experiencias VERSE
-            </Button>
+            {/* Copywriting enfocado en recibir a la audiencia después del evento */}
+            <p className="text-sm sm:text-base md:text-lg text-gray-200 max-w-2xl font-light leading-relaxed mb-6">
+              Gracias por haber compartido la experiencia con nosotros en vivo. El impacto de lo vivido trasciende el instante: aquí puedes explorar nuestras creaciones completas, descubrir el universo visual de cada producción y comenzar a darle forma a tu propia historia.
+            </p>
+
+            {/* Pregunta en el tiempo (filosofía VERSE) */}
+            <div className="text-xs sm:text-sm text-verse-cyan italic font-serif tracking-wide border-y border-white/10 py-3 px-6 max-w-xl mx-auto mb-8 bg-white/5 rounded-xl">
+              “Si pudieras escribir un mensaje en el tiempo, ¿qué dirías?”
+            </div>
+
+            {/* Acciones para explorar portfolio post-evento o conectar */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto">
+              <Button 
+                primary 
+                onClick={() => {
+                  const el = document.getElementById('rocola-universos');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  else setView('estudio');
+                }} 
+                className="px-8 py-3.5 text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(237,98,46,0.4)]"
+              >
+                <span>Revivir la Experiencia & Galería</span>
+                <ArrowRight size={16} />
+              </Button>
+              <Button 
+                onClick={onOpenContact} 
+                className="px-8 py-3.5 text-xs uppercase tracking-wider flex items-center justify-center gap-2 border-verse-blue/50 hover:border-verse-cyan bg-verse-navy/40"
+              >
+                <MessageSquare size={16} />
+                <span>Conectar con el Estudio</span>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

@@ -128,7 +128,7 @@ const Footer = ({ setView, onOpenContact }) => {
 
       {/* Footer Bottom */}
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/10 text-center text-xs text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-4 relative z-10">
-        <p>© 2026 VERSE Estudio Creativo. Todos los derechos reservados.</p>
+        <p>© 2026 VERSE Estudio Creativo • Creado para conectar universos y trascender cada encuentro.</p>
         <p className="flex gap-4 text-xs items-center">
           <a href="#" className="hover:text-white transition-colors">Políticas de Privacidad</a>
           <span>|</span>
