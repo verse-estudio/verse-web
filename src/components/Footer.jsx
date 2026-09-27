@@ -103,9 +103,19 @@ const Footer = ({ setView, onOpenContact }) => {
                 hola@verse-estudio.com
               </a>
             </li>
-            <li>
-              <a href="tel:+59170000000" className="hover:text-white transition-colors">
-                +591 70000000
+            <li className="flex items-center gap-2">
+              <a href="tel:+59168006660" className="hover:text-white transition-colors">
+                +591 68006660
+              </a>
+              <span className="text-gray-600">·</span>
+              <a 
+                href="https://wa.me/59168006660" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="text-verse-cyan hover:text-white transition-colors text-xs font-mono"
+                title="Chatear en WhatsApp"
+              >
+                WhatsApp
               </a>
             </li>
             <li className="text-xs text-gray-500 italic pt-2 border-t border-white/5">
